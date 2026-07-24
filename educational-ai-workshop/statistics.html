@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>AI Workshop Survey Statistics</title>
+  <style>
+    :root{--navy:#123b63;--blue:#1f6f9f;--teal:#2a9d8f;--ink:#183040;--muted:#607482;--paper:#fff;--wash:#eef6f8;--line:#d7e4e9;--danger:#a93b3b}*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(160deg,#e8f4f8,#f8fbfc 48%,#edf7f5);min-height:100vh}.shell{width:min(1040px,calc(100% - 28px));margin:auto;padding:28px 0 48px}header{padding:28px;border-radius:22px;color:#fff;background:linear-gradient(135deg,var(--navy),var(--blue));box-shadow:0 16px 40px rgba(18,59,99,.18)}h1{margin:0 0 9px;font-size:clamp(1.8rem,5vw,2.7rem)}header p{margin:0;line-height:1.55;opacity:.93}.panel{background:var(--paper);border:1px solid rgba(18,59,99,.1);border-radius:20px;padding:22px;margin-top:16px;box-shadow:0 10px 28px rgba(18,59,99,.08)}h2{margin:0 0 13px;font-size:1.15rem}.setup{display:grid;grid-template-columns:1fr auto;gap:10px}.setup input{width:100%;min-height:49px;border:1px solid var(--line);border-radius:13px;padding:0 14px;font:inherit}.setup button,.toolbar button{border:0;border-radius:13px;background:var(--teal);color:#fff;padding:0 18px;min-height:49px;font:inherit;font-weight:800;cursor:pointer}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.toolbar button.secondary{background:var(--navy)}.toolbar button.light{background:var(--wash);color:var(--navy)}.note{font-size:.84rem;color:var(--muted);line-height:1.5;margin:12px 0 0}.status{margin-top:12px;padding:11px 13px;background:var(--wash);border-radius:12px;font-size:.9rem}.status.error{background:#fff0f0;color:var(--danger)}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}.metric{background:var(--paper);border-radius:18px;padding:19px;border:1px solid rgba(18,59,99,.1);box-shadow:0 8px 20px rgba(18,59,99,.06)}.metric span{display:block;color:var(--muted);font-size:.82rem;line-height:1.35}.metric strong{display:block;margin-top:5px;font-size:clamp(1.55rem,5vw,2.25rem);color:var(--navy)}.charts{display:grid;gap:16px;margin-top:16px}.chart-card{background:var(--paper);border-radius:20px;padding:22px;border:1px solid rgba(18,59,99,.1);box-shadow:0 10px 28px rgba(18,59,99,.08)}.bars{display:grid;gap:12px}.bar-row{display:grid;grid-template-columns:105px 1fr 64px;gap:10px;align-items:center;font-size:.9rem}.track{height:24px;background:var(--wash);border-radius:999px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:999px;transition:width .35s}.bar-value{text-align:right;font-weight:800}.table-wrap{overflow:auto;margin-top:16px}table{width:100%;border-collapse:collapse;min-width:660px;background:#fff}th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);font-size:.84rem}th{position:sticky;top:0;background:var(--navy);color:#fff}tbody tr:nth-child(even){background:#f7fafb}.empty{padding:24px;text-align:center;color:var(--muted)}.hidden{display:none!important}@media(min-width:760px){.metrics{grid-template-columns:repeat(4,minmax(0,1fr))}.charts{grid-template-columns:1fr 1fr}}@media(max-width:560px){.setup{grid-template-columns:1fr}.bar-row{grid-template-columns:86px 1fr 52px}}
+  </style>
+</head>
+<body>
+<main class="shell">
+  <header><h1>Survey Statistics</h1><p>Organizer dashboard for the AI in Course Delivery workshop survey. The API key stays only in this browser and is never stored on the public website.</p></header>
+
+  <section class="panel">
+    <h2>Connect your response archive</h2>
+    <div class="setup"><input id="apiKey" type="password" autocomplete="off" placeholder="Paste your FormSubmit API key"><button id="loadBtn" type="button">Load statistics</button></div>
+    <div class="toolbar"><button class="secondary" id="requestKeyBtn" type="button">Email me an API key</button><button class="light" id="forgetBtn" type="button">Forget saved key</button><button class="light" id="csvBtn" type="button" disabled>Export survey CSV</button></div>
+    <p class="note">The first time, select “Email me an API key.” FormSubmit will send the key to ray.taheri@ubc.ca. Paste it above. The dashboard filters the archive to this workshop survey and calculates the results. FormSubmit limits archive access to five requests per day and retains submissions for 30 days.</p>
+    <div id="status" class="status">No data loaded yet.</div>
+  </section>
+
+  <section id="results" class="hidden">
+    <div class="metrics">
+      <div class="metric"><span>Total valid responses</span><strong id="total">0</strong></div>
+      <div class="metric"><span>Average AI reliance today</span><strong id="avgToday">0%</strong></div>
+      <div class="metric"><span>Average expected in 2030</span><strong id="avgFuture">0%</strong></div>
+      <div class="metric"><span>Average projected change</span><strong id="avgChange">0 pp</strong></div>
+    </div>
+    <div class="charts">
+      <section class="chart-card"><h2>Fruit and vegetable metaphor choices</h2><div id="fruitBars" class="bars"></div></section>
+      <section class="chart-card"><h2>Average course-delivery reliance</h2><div class="bars"><div class="bar-row"><span>Today</span><div class="track"><div id="todayFill" class="fill"></div></div><span id="todayBar" class="bar-value">0%</span></div><div class="bar-row"><span>2030</span><div class="track"><div id="futureFill" class="fill"></div></div><span id="futureBar" class="bar-value">0%</span></div></div></section>
+    </div>
+    <section class="panel"><h2>Individual anonymous responses</h2><div class="table-wrap"><table><thead><tr><th>Submitted (UTC)</th><th>AI today</th><th>AI in 2030</th><th>Change</th><th>Metaphor</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+  </section>
+</main>
+<script>
+const SURVEY_PATH='educational-ai-workshop';
+const fruits=['Onion','Dragon fruit','Watermelon','Corn','Passion fruit','Lemon'];
+const els={key:document.getElementById('apiKey'),status:document.getElementById('status'),results:document.getElementById('results'),csv:document.getElementById('csvBtn')};
+let current=[];
+els.key.value=localStorage.getItem('aiWorkshopFormSubmitKey')||'';
+function setStatus(message,error=false){els.status.textContent=message;els.status.className='status'+(error?' error':'');}
+function num(v){const n=parseFloat(String(v??'').replace('%',''));return Number.isFinite(n)?n:null;}
+function normalize(s){
+ const d=s.form_data||{};
+ const today=num(d['AI reliance today (%)']);
+ const future=num(d['Expected AI reliance in 2030 (%)']);
+ const fruit=d['AI fruit or vegetable metaphor'];
+ const url=String(s.form_url||'');
+ if(!url.includes(SURVEY_PATH)||today===null||future===null||!fruits.includes(fruit)) return null;
+ return {submitted:s.submitted_at?.date||'',today,future,change:future-today,fruit};
+}
+function avg(a,k){return a.length?a.reduce((sum,x)=>sum+x[k],0)/a.length:0;}
+function render(data){
+ current=data;
+ const aToday=avg(data,'today'),aFuture=avg(data,'future'),aChange=avg(data,'change');
+ document.getElementById('total').textContent=data.length;
+ document.getElementById('avgToday').textContent=aToday.toFixed(1)+'%';
+ document.getElementById('avgFuture').textContent=aFuture.toFixed(1)+'%';
+ document.getElementById('avgChange').textContent=(aChange>=0?'+':'')+aChange.toFixed(1)+' pp';
+ document.getElementById('todayFill').style.width=Math.max(0,Math.min(100,aToday))+'%';
+ document.getElementById('futureFill').style.width=Math.max(0,Math.min(100,aFuture))+'%';
+ document.getElementById('todayBar').textContent=aToday.toFixed(1)+'%';
+ document.getElementById('futureBar').textContent=aFuture.toFixed(1)+'%';
+ const counts=Object.fromEntries(fruits.map(f=>[f,0]));data.forEach(x=>counts[x.fruit]++);
+ document.getElementById('fruitBars').innerHTML=fruits.map(f=>{const p=data.length?counts[f]/data.length*100:0;return `<div class="bar-row"><span>${f}</span><div class="track"><div class="fill" style="width:${p}%"></div></div><span class="bar-value">${counts[f]} (${p.toFixed(0)}%)</span></div>`}).join('');
+ document.getElementById('rows').innerHTML=data.length?data.map(x=>`<tr><td>${escapeHtml(x.submitted)}</td><td>${x.today}%</td><td>${x.future}%</td><td>${x.change>=0?'+':''}${x.change} pp</td><td>${escapeHtml(x.fruit)}</td></tr>`).join(''):'<tr><td colspan="5" class="empty">No matching survey responses found.</td></tr>';
+ els.results.classList.remove('hidden');els.csv.disabled=!data.length;
+}
+function escapeHtml(v){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+async function load(){
+ const key=els.key.value.trim();if(!key){setStatus('Paste your FormSubmit API key first.',true);return;}
+ localStorage.setItem('aiWorkshopFormSubmitKey',key);setStatus('Loading the response archive…');
+ try{const r=await fetch('https://formsubmit.co/api/get-submissions/'+encodeURIComponent(key));const j=await r.json();if(!r.ok||!j.success)throw new Error(j.message||'The archive could not be loaded.');const data=(j.submissions||[]).map(normalize).filter(Boolean);render(data);setStatus(`Loaded ${data.length} matching survey response${data.length===1?'':'s'}.`);}catch(e){setStatus(e.message+' Check the API key and try again.',true);}
+}
+document.getElementById('loadBtn').addEventListener('click',load);
+document.getElementById('requestKeyBtn').addEventListener('click',async()=>{setStatus('Requesting an API key email…');try{const r=await fetch('https://formsubmit.co/api/get-apikey/ray.taheri@ubc.ca');const j=await r.json();setStatus(j.message||'Check ray.taheri@ubc.ca for the API key.');}catch(e){setStatus('Could not request the key automatically. Open FormSubmit API documentation and request it there.',true);}});
+document.getElementById('forgetBtn').addEventListener('click',()=>{localStorage.removeItem('aiWorkshopFormSubmitKey');els.key.value='';current=[];els.results.classList.add('hidden');els.csv.disabled=true;setStatus('The saved API key was removed from this browser.');});
+document.getElementById('csvBtn').addEventListener('click',()=>{const header=['Submitted UTC','AI reliance today (%)','Expected AI reliance in 2030 (%)','Change (percentage points)','Metaphor'];const lines=[header,...current.map(x=>[x.submitted,x.today,x.future,x.change,x.fruit])].map(row=>row.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(','));const blob=new Blob([lines.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ai-workshop-survey-responses.csv';a.click();URL.revokeObjectURL(a.href);});
+</script>
+</body>
+</html>
