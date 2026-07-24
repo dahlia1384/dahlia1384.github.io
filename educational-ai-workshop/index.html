@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b63">
+  <title>AI in Course Delivery — Workshop Survey</title>
+  <style>
+    :root{--navy:#123b63;--blue:#1f6f9f;--teal:#2a9d8f;--ink:#183040;--muted:#607482;--paper:#fff;--wash:#eef6f8;--line:#d7e4e9;--focus:#ffb000}*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(160deg,#e8f4f8 0%,#f8fbfc 48%,#edf7f5 100%);min-height:100vh}.shell{width:min(760px,calc(100% - 28px));margin:0 auto;padding:24px 0 44px}header{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;border-radius:22px;padding:30px 24px;box-shadow:0 16px 40px rgba(18,59,99,.18)}.eyebrow{margin:0 0 8px;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.82}h1{margin:0;font-size:clamp(1.8rem,7vw,3rem);line-height:1.06}header p{margin:13px 0 0;max-width:60ch;line-height:1.55;opacity:.93}form{margin-top:18px}.question{background:var(--paper);border:1px solid rgba(18,59,99,.1);border-radius:20px;padding:22px;margin:14px 0;box-shadow:0 10px 28px rgba(18,59,99,.08)}.qnum{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--wash);color:var(--navy);font-weight:900;margin-bottom:10px}h2{margin:0 0 8px;font-size:1.17rem;line-height:1.35}.hint{margin:0 0 18px;color:var(--muted);font-size:.93rem;line-height:1.45}.range-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px}input[type=range]{width:100%;accent-color:var(--teal);min-height:40px;cursor:pointer}output{display:grid;place-items:center;min-width:72px;height:48px;border-radius:14px;background:var(--navy);color:#fff;font-size:1.12rem;font-weight:900}.scale{display:flex;justify-content:space-between;color:var(--muted);font-size:.78rem;padding-right:88px}fieldset{border:0;padding:0;margin:0}legend{padding:0;width:100%}.fruit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.fruit-option{position:relative}.fruit-option input{position:absolute;opacity:0;pointer-events:none}.fruit-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;min-height:146px;padding:14px 8px;border:2px solid var(--line);border-radius:17px;background:#fff;cursor:pointer;transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease,background .15s ease;text-align:center;font-weight:800}.fruit-card:hover{transform:translateY(-2px);border-color:#93bdc7}.fruit-option input:focus-visible+.fruit-card{outline:4px solid color-mix(in srgb,var(--focus) 45%,transparent);outline-offset:2px}.fruit-option input:checked+.fruit-card{border-color:var(--teal);background:#effaf7;box-shadow:0 0 0 4px rgba(42,157,143,.12);transform:translateY(-2px)}.fruit-card svg{width:82px;height:82px;filter:drop-shadow(0 5px 5px rgba(24,48,64,.12))}.actions{margin-top:18px}button{width:100%;min-height:58px;border:0;border-radius:17px;background:linear-gradient(135deg,var(--teal),#1a7e78);color:#fff;font:inherit;font-weight:900;font-size:1.08rem;cursor:pointer;box-shadow:0 12px 24px rgba(42,157,143,.22)}button:hover{filter:brightness(.98);transform:translateY(-1px)}button:focus-visible{outline:4px solid var(--focus);outline-offset:3px}.privacy{margin:12px 4px 0;text-align:center;color:var(--muted);font-size:.79rem;line-height:1.5}.hp{position:absolute;left:-5000px}footer{text-align:center;color:var(--muted);font-size:.78rem;padding-top:14px}@media(min-width:620px){.shell{padding-top:38px}header{padding:38px}.question{padding:28px}.fruit-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">Educational Workshop Pulse Check</p>
+      <h1>AI in Course Delivery</h1>
+      <p>Share your current practice, your expectation for 2030, and the fruit or vegetable that best captures your view of AI in education.</p>
+    </header>
+    <form action="https://formsubmit.co/ray.taheri@ubc.ca" method="POST">
+      <input type="hidden" name="_subject" value="AI Education Workshop Survey Response">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://dahlia1384.github.io/educational-ai-workshop/thank-you.html">
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off">
+      <section class="question" aria-labelledby="q1-title">
+        <span class="qnum" aria-hidden="true">1</span>
+        <h2 id="q1-title">What percentage of your course delivery relies on AI today?</h2>
+        <p class="hint">Move the slider to your best estimate.</p>
+        <div class="range-row">
+          <input id="today" name="AI reliance today (%)" type="range" min="0" max="100" step="1" value="0" oninput="todayValue.value=this.value+'%'" aria-describedby="today-scale">
+          <output id="todayValue" for="today">0%</output>
+        </div>
+        <div id="today-scale" class="scale"><span>0%</span><span>100%</span></div>
+      </section>
+      <section class="question" aria-labelledby="q2-title">
+        <span class="qnum" aria-hidden="true">2</span>
+        <h2 id="q2-title">What percentage of your course delivery do you expect will rely on AI in 2030?</h2>
+        <p class="hint">Move the slider to your best estimate.</p>
+        <div class="range-row">
+          <input id="future" name="Expected AI reliance in 2030 (%)" type="range" min="0" max="100" step="1" value="25" oninput="futureValue.value=this.value+'%'" aria-describedby="future-scale">
+          <output id="futureValue" for="future">25%</output>
+        </div>
+        <div id="future-scale" class="scale"><span>0%</span><span>100%</span></div>
+      </section>
+      <section class="question">
+        <fieldset>
+          <legend>
+            <span class="qnum" aria-hidden="true">3</span>
+            <h2>Metaphorically, which fruit or vegetable best represents AI in education?</h2>
+            <p class="hint">Choose the one that most closely matches your perspective.</p>
+          </legend>
+          <div class="fruit-grid">
+            <div class="fruit-option"><input required type="radio" id="onion" name="AI fruit or vegetable metaphor" value="Onion"><label class="fruit-card" for="onion"><svg viewBox="0 0 100 100" role="img" aria-label="Onion illustration"><path d="M50 30C31 34 22 49 24 65c2 18 13 27 26 27s24-9 26-27C78 49 69 34 50 30z" fill="#9b5db3"/><path d="M50 31C44 47 43 70 50 91M50 31c6 16 7 39 0 60M38 35c-6 19-4 39 4 53M62 35c6 19 4 39-4 53" fill="none" stroke="#d7a7df" stroke-width="3" stroke-linecap="round"/><path d="M49 31c-5-11-1-20 7-25M51 31c7-11 16-14 24-11M48 30C39 20 31 19 24 23" fill="none" stroke="#4d9b5f" stroke-width="6" stroke-linecap="round"/></svg><span>Onion</span></label></div>
+            <div class="fruit-option"><input required type="radio" id="dragon-fruit" name="AI fruit or vegetable metaphor" value="Dragon fruit"><label class="fruit-card" for="dragon-fruit"><svg viewBox="0 0 100 100" role="img" aria-label="Dragon fruit illustration"><ellipse cx="50" cy="54" rx="29" ry="35" fill="#f03d91"/><path d="M31 29l-13-9 5 19M48 20L43 5l-5 18M68 29l14-8-6 19M78 53l16-2-15 12M69 76l8 14-16-7M32 76l-9 13 17-7M22 52L7 49l14 13" fill="#5bbf68"/><ellipse cx="50" cy="54" rx="20" ry="25" fill="#fff8f2"/><g fill="#2a2b2c"><circle cx="43" cy="43" r="1.5"/><circle cx="56" cy="39" r="1.5"/><circle cx="60" cy="52" r="1.5"/><circle cx="40" cy="57" r="1.5"/><circle cx="52" cy="67" r="1.5"/><circle cx="46" cy="50" r="1.2"/><circle cx="58" cy="62" r="1.2"/><circle cx="36" cy="48" r="1.2"/></g></svg><span>Dragon fruit</span></label></div>
+            <div class="fruit-option"><input required type="radio" id="watermelon" name="AI fruit or vegetable metaphor" value="Watermelon"><label class="fruit-card" for="watermelon"><svg viewBox="0 0 100 100" role="img" aria-label="Watermelon illustration"><path d="M12 70A42 42 0 0 1 88 70Z" fill="#2f9d56"/><path d="M18 68A36 36 0 0 1 82 68Z" fill="#dff09a"/><path d="M23 65A31 31 0 0 1 77 65Z" fill="#f0525f"/><g fill="#382f35"><path d="M40 52c4 1 5 5 1 8-3-2-4-5-1-8z"/><path d="M57 49c4 1 5 5 1 8-3-2-4-5-1-8z"/><path d="M50 36c4 1 5 5 1 8-3-2-4-5-1-8z"/><path d="M67 58c3 1 4 4 1 6-3-1-4-4-1-6z"/><path d="M31 60c3 1 4 4 1 6-3-1-4-4-1-6z"/></g></svg><span>Watermelon</span></label></div>
+            <div class="fruit-option"><input required type="radio" id="corn" name="AI fruit or vegetable metaphor" value="Corn"><label class="fruit-card" for="corn"><svg viewBox="0 0 100 100" role="img" aria-label="Corn illustration"><path d="M50 15c17 0 24 15 22 37-2 23-10 36-22 36S30 75 28 52C26 30 33 15 50 15z" fill="#ffd34e"/><g fill="none" stroke="#e8a92b" stroke-width="2"><path d="M36 22l28 58M28 37l36 48M28 55l28 33M64 22L36 80M72 38L36 85M72 55L44 88"/></g><path d="M31 42C16 52 14 72 24 91c11-6 20-16 25-28" fill="#4da95c"/><path d="M69 42c15 10 17 30 7 49-11-6-20-16-25-28" fill="#3d9150"/></svg><span>Corn</span></label></div>
+            <div class="fruit-option"><input required type="radio" id="passion-fruit" name="AI fruit or vegetable metaphor" value="Passion fruit"><label class="fruit-card" for="passion-fruit"><svg viewBox="0 0 100 100" role="img" aria-label="Passion fruit illustration"><circle cx="50" cy="53" r="35" fill="#713e8d"/><circle cx="50" cy="53" r="27" fill="#f7d65a"/><circle cx="50" cy="53" r="20" fill="#f4b93b"/><g fill="#4c3036"><circle cx="40" cy="45" r="3"/><circle cx="52" cy="40" r="3"/><circle cx="62" cy="48" r="3"/><circle cx="58" cy="60" r="3"/><circle cx="45" cy="64" r="3"/><circle cx="36" cy="56" r="3"/><circle cx="50" cy="52" r="3"/></g><path d="M54 18c1-7 7-11 15-11" fill="none" stroke="#4e9d59" stroke-width="6" stroke-linecap="round"/></svg><span>Passion fruit</span></label></div>
+            <div class="fruit-option"><input required type="radio" id="lemon" name="AI fruit or vegetable metaphor" value="Lemon"><label class="fruit-card" for="lemon"><svg viewBox="0 0 100 100" role="img" aria-label="Lemon illustration"><path d="M19 55c7-25 29-39 53-30 9 4 14 11 12 20-5 24-27 39-51 31-10-4-16-12-14-21z" fill="#f7d53f"/><path d="M23 56c6-20 24-33 44-28" fill="none" stroke="#ffe987" stroke-width="5" stroke-linecap="round"/><path d="M70 26c7-12 18-13 25-8-5 9-13 14-24 12" fill="#55a95f"/></svg><span>Lemon</span></label></div>
+          </div>
+        </fieldset>
+      </section>
+      <div class="actions"><button type="submit">Submit my responses</button><p class="privacy">This three-question survey does not request names or contact details. Responses are forwarded to the workshop organizer at UBC.</p></div>
+    </form>
+    <footer>AI in Course Delivery Workshop Survey</footer>
+  </main>
+</body>
+</html>
